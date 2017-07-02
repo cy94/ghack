@@ -2,9 +2,9 @@
 """
 Created on Sun Jul 02 11:38:36 2017
 
-@author: 
+@author: shortCut team
 
-The function calculates the incentives of 2 drivers. 
+The function calculates the incentives of 2 drivers and a working demo 
 """
 
 import velocity_incentive_calculation as incentive_1 # user defined function
@@ -23,8 +23,8 @@ def main_function():
     loop_exit = min (len(df_a['LOCATION Speed ( Kmh)']), len(df_b['LOCATION Speed ( Kmh)']))
     iterator_a = 0
     iterator_b = 0
-    flip_coins_initial_a = 50
-    flip_coins_initial_b = 50
+    flip_coins_initial_a = 49.5
+    flip_coins_initial_b = 49.6
     journey_point_a = 0
     journey_point_b = 0
     velocity_a = []
@@ -32,6 +32,10 @@ def main_function():
     
     plt.ioff()
     
+    total_rank = {'driver d' : 76,
+                  'driver z' : 73,
+                  'driver a': 49.5, 
+                  'driver b': 50}
     j = 0
     while (j <= loop_exit):
         
@@ -107,6 +111,12 @@ def main_function():
         cv2.putText(driver_a, 'Flip Coins : ' + str(flip_coins_a), (95, 190), cv2.FONT_HERSHEY_SIMPLEX, .7, (0, 0, 255))
         cv2.putText(driver_a, 'Journey Points : ' + str(journey_point_a), (95, 228), cv2.FONT_HERSHEY_SIMPLEX, .5, (0, 0, 255))
         driver_a[270:270+160, 10:10+300, :] = data_a
+        k = 0
+        total_rank['driver a'] = flip_coins_a
+        cv2.putText(driver_a, 'NAME' + '   ' + 'RANK FlipCoins', (180, 65), cv2.FONT_HERSHEY_SIMPLEX, .5, (255, 0, 0))
+        for key in sorted(total_rank.iterkeys(), reverse = True):
+            k += 1
+            cv2.putText(driver_a, key + '  ' + str(k) + '   ' + str(total_rank[key]), (180, 65 + 20*k), cv2.FONT_HERSHEY_SIMPLEX, .5, (255, 0, 0))
         cv2.imshow('Driver A', driver_a)
         
         driver_b = np.ones((672, 378, 3), dtype = np.uint8) * 255 # 960, 540
@@ -117,6 +127,12 @@ def main_function():
         cv2.putText(driver_b, 'Flip Coins : ' + str(flip_coins_b), (95, 190), cv2.FONT_HERSHEY_SIMPLEX, .7, (0, 0, 255))
         cv2.putText(driver_b, 'Journey Points : ' + str(journey_point_b), (95, 228), cv2.FONT_HERSHEY_SIMPLEX, .5, (0, 0, 255))
         driver_b[270:270+160, 10:10+300, :] = data_b
+        k = 0
+        total_rank['driver b'] = flip_coins_b
+        cv2.putText(driver_b, 'NAME' + '   ' + 'RANK FlipCoins', (180, 65), cv2.FONT_HERSHEY_SIMPLEX, .5, (255, 0, 0))
+        for key in sorted(total_rank.iterkeys(), reverse = True):
+            k += 1
+            cv2.putText(driver_b, key + '  ' + str(k) + '   ' + str(total_rank[key]), (180, 65 + 20*k), cv2.FONT_HERSHEY_SIMPLEX, .5, (255, 0, 0))
         cv2.imshow('Driver B', driver_b)
 
     cv2.waitKey(0)
