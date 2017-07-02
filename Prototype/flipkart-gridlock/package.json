@@ -1,15 +1,15 @@
 {
-  "name": "hono-demo",
+  "name": "traf-fix",
   "description": "",
   "version": "0.0.1",
-  "license": "SEE LICENSE IN LICENSE.md",
+  
   "author": {
-    "name": "sravya.kurada@siemens.com",
-    "email": "sravya.kurada@siemens.com"
+    "name": "sravya.kurada@gmail.com",
+    "email": "sravya.kurada@gmail.com"
   },
   "private": true,
   "simplConfig": {
-    "bundleIdentifier": "com.siemens.hono_demo",
+    "bundleIdentifier": "com.gridlock.traf_fix",
     "versionReplace": [
       {
         "file": "config.xml",
