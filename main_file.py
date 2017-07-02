@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun June 25 11:38:36 2017
+Created on Sun Jul 02 11:38:36 2017
 
-@author: shortCut team
+@author: 
 
-The function calculates the incentives of 2 drivers and a working demo 
+The function calculates the incentives of 2 drivers. 
 """
 
 import velocity_incentive_calculation as incentive_1 # user defined function
@@ -13,6 +13,7 @@ import pandas as pd
 import numpy as np
 import cv2 
 import math
+import operator
 
 def main_function():
     
@@ -114,9 +115,13 @@ def main_function():
         k = 0
         total_rank['driver a'] = flip_coins_a
         cv2.putText(driver_a, 'NAME' + '   ' + 'RANK FlipCoins', (180, 65), cv2.FONT_HERSHEY_SIMPLEX, .5, (255, 0, 0))
-        for key in sorted(total_rank.iterkeys(), reverse = True):
+        
+        for key in sorted(total_rank.items(), key=operator.itemgetter(1), reverse = True):
             k += 1
-            cv2.putText(driver_a, key + '  ' + str(k) + '   ' + str(total_rank[key]), (180, 65 + 20*k), cv2.FONT_HERSHEY_SIMPLEX, .5, (255, 0, 0))
+            cv2.putText(driver_a, key[0] + '  ' + str(k) + '   ' + str(key[1]), (180, 65 + 20*k), cv2.FONT_HERSHEY_SIMPLEX, .5, (255, 0, 0))
+            if key[0] == 'driver a':
+                rank = k
+        cv2.putText(driver_a, 'RANK : ' + str(rank), (10, 75), cv2.FONT_HERSHEY_SIMPLEX, .8, (0, 255, 0))  
         cv2.imshow('Driver A', driver_a)
         
         driver_b = np.ones((672, 378, 3), dtype = np.uint8) * 255 # 960, 540
@@ -130,9 +135,12 @@ def main_function():
         k = 0
         total_rank['driver b'] = flip_coins_b
         cv2.putText(driver_b, 'NAME' + '   ' + 'RANK FlipCoins', (180, 65), cv2.FONT_HERSHEY_SIMPLEX, .5, (255, 0, 0))
-        for key in sorted(total_rank.iterkeys(), reverse = True):
+        for key in sorted(total_rank.items(), key=operator.itemgetter(1), reverse = True):
             k += 1
-            cv2.putText(driver_b, key + '  ' + str(k) + '   ' + str(total_rank[key]), (180, 65 + 20*k), cv2.FONT_HERSHEY_SIMPLEX, .5, (255, 0, 0))
+            cv2.putText(driver_b, key[0] + '  ' + str(k) + '   ' + str(key[1]), (180, 65 + 20*k), cv2.FONT_HERSHEY_SIMPLEX, .5, (255, 0, 0))
+            if key[0] == 'driver b':
+                rank = k
+        cv2.putText(driver_b, 'RANK : ' + str(rank), (10, 75), cv2.FONT_HERSHEY_SIMPLEX, .8, (0, 255, 0))        
         cv2.imshow('Driver B', driver_b)
 
     cv2.waitKey(0)
