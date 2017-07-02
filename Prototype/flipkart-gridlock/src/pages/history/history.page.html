@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Trends
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+
+  <ion-card>
+
+    <chart [options]="pointChartOptions" (load)="saveChart($event.context)">
+      <series (hide)="onSeriesHide($event.context)">
+        <point (select)="onPointSelect($event.context)"></point>
+      </series>
+    </chart>
+
+  </ion-card>
+  <ion-card>
+
+  <ion-item>
+    <ion-avatar item-start>
+     <ion-icon name="thumbs-up">    Most points Earned</ion-icon>
+    </ion-avatar>
+    <h2></h2>
+    <p>June 21st to June 26th '2017</p>
+  </ion-item>
+
+  <ion-item>
+    <ion-avatar item-start>
+     <ion-icon name="thumbs-down">  Most points Lost</ion-icon>
+    </ion-avatar>
+    <h2></h2>
+    <p>July 1st '2017</p>
+  </ion-item>
+
+ 
+
+  
+
+</ion-card>
+
+
+
+  
+
+
+
+
+
+
+
+
+</ion-content>

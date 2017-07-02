@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+          Dashboard
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<ion-card >
+
+
+    <ion-item>
+      <ion-grid>
+
+     <ion-row>
+          <ion-col col6>
+            <chart [options]="pointsGuageOptions"></chart>
+          </ion-col>
+     </ion-row>
+      </ion-grid>
+    </ion-item>
+</ion-card>
+    
+ <ion-navbar>
+    <ion-title>
+          Last Trip
+    </ion-title>
+  </ion-navbar>
+   <!-- <ion-card-title>
+           Last Trip
+        </ion-card-title>-->
+  <ion-card>
+
+  <img src="assets/map.PNG">
+  <!--<ion-fab>
+    <button ion-fab>
+      <ion-icon name="pin"></ion-icon>
+    </button>
+  </ion-fab>-->
+
+  <ion-item>
+    <ion-icon name="home" item-left large></ion-icon>
+    <h2>Malleshwaram</h2>
+    <p>#49-12-203 , Sector 1, Malleshwaram West</p>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="restaurant" item-left large ></ion-icon>
+    <h2>Republic Of Noodles</h2>
+    <p>Lemon Tree,E-City, Phase-1 </p>
+  </ion-item>
+
+  <ion-item>
+    <span item-left>42 min</span>
+    <span item-left>(24.9 kms)</span>
+   
+  </ion-item>
+  <ion-item>
+    <span item-left>Points Earned :</span>
+    <span item-left>8</span>
+   
+  </ion-item>
+
+</ion-card>
+</ion-content>
