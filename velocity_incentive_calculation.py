@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Jul 02 11:41:03 2017
+Created on Sun June 25 11:41:03 2017
 
-@author: 
+@author: shortcut team
 
 function velocity_journey_point finds the incentive for the driver based on 
 the current velocity. Driver gets .1 for good driving (velocity <= 100) and -.2 for bad 
