@@ -6,4 +6,4 @@ Analyze driver behaviour through smartphone sensors
 
 
 
-The demo video is : https://youtu.be/xDt5I0hwstg
+The demo video for the gui at : https://youtu.be/xDt5I0hwstg
